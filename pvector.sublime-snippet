@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+void print(vector<ll> &v)
+{
+    ll i;
+    cout << "\nVector " << v.size() << "\n";
+    for (i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << " ";
+    }
+    cout << "\n\n";
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tpvector</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

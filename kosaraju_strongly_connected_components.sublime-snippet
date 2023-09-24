@@ -1,0 +1,70 @@
+<snippet>
+	<content><![CDATA[
+void kosaraju_dfs_1(vector<vector<ll>> &adj, ll u, vector<ll> &vis, stack<ll> &st)
+{
+    vis[u] = true;
+    for (ll i = 0; i < (int)adj[u].size(); i++)
+    {
+        ll x = adj[u][i];
+        if (vis[x] == 0)
+        {
+            kosaraju_dfs_1(adj, x, vis, st);
+        }
+    }
+    st.push(u);
+}
+
+void kosaraju_dfs_2(vector<vector<ll>> &rev_adj, ll u, vector<ll> &vis, vector<ll> &component)
+{
+    component.push_back(u);
+    vis[u] = 1;
+    for (ll i = 0; i < (int)rev_adj[u].size(); i++)
+    {
+        ll x = rev_adj[u][i];
+        if (vis[x] == 0)
+        {
+            kosaraju_dfs_2(rev_adj, x, vis, component);
+        }
+    }
+}
+
+vector<vector<ll>> kosaraju(vector<vector<ll>> &adj, ll n)
+{
+    vector<vector<ll>> rev_adj(n + 1);
+    for (ll i = 1; i <= n; i++)
+    {
+        for (ll j = 0; j < (int)adj[i].size(); j++)
+        {
+            rev_adj[adj[i][j]].push_back(i);
+        }
+    }
+    vector<ll> vis(n + 1, 0);
+    stack <ll> st;
+    for (ll i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            kosaraju_dfs_1(adj, i, vis, st);
+        }
+    }
+    vis.assign(n + 1, 0);
+    vector<vector<ll>> ans;
+    while (!st.empty())
+    {
+        ll u = st.top();
+        st.pop();
+        if (vis[u] == 0)
+        {
+            vector<ll> component;
+            kosaraju_dfs_2(rev_adj, u, vis, component);
+            ans.push_back(component);
+        }
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>t_kosaraju_strongly_connected_components</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

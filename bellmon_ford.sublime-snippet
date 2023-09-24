@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[
+vector<pair<ll, ll>>  bellmon_ford(vector<vector<ll>> edg, ll n, ll src)
+{
+    ll m = edg.size();
+    vector<pair<ll, ll>> dispar(n + 1, {inf, -1});
+    dispar[src].first = 0;
+    dispar[src].second = -1;
+    for (ll t = 0; t <= n; t++)
+    {
+        for (ll i = 0; i < m; i++)
+        {
+            ll x = edg[i][0];
+            ll y = edg[i][1];
+            ll z = edg[i][2];
+            if (dispar[x].first != inf && dispar[y].first > dispar[x].first + z)
+            {
+                dispar[y].first = dispar[x].first + z;
+                dispar[y].second = x;
+            }
+        }
+    }
+    for (ll t = 0; t <= n; t++)
+    {
+        for (ll i = 0; i < m; i++)
+        {
+            ll x = edg[i][0];
+            ll y = edg[i][1];
+            ll z = edg[i][2];
+            if (dispar[x].first != inf && dispar[y].first > dispar[x].first + z)
+            {
+                dispar[y].first = -inf;
+            }
+        }
+    }
+    return dispar;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tbellmon_ford_shortest_path_for_negative_weight</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

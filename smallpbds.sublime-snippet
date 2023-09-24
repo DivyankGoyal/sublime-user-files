@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+ll numberofsmaller(ordered_set<ll> st,ll x)
+{
+    ll k;
+    auto it = st.upper_bound(x);
+    if(it==st.end())
+    {
+        k = st.size();
+    }
+    else
+    {
+        if(it==st.begin())
+        {
+            k = 0;
+        }
+        else
+        {
+            it--;
+            k = st.order_of_key(*it)+1;
+        }
+    }
+    return k;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tsmallerpbds</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,57 @@
+<snippet>
+	<content><![CDATA[
+
+class dsu_class
+{
+public:
+    vector<ll> ar;
+    vector<ll> rank;
+    vector<ll> parent;
+    void build(ll n, vector<ll> a = {})
+    {
+        parent.clear();
+        parent.resize(n + 1);
+        rank.clear();
+        rank.resize(n + 1);
+        ar = a;
+        for (ll i = 0; i <= n; i++)
+        {
+            rank[i] = 1;
+            parent[i] = i;
+        }
+    }
+
+    ll findp(ll v)
+    {
+        if (v == parent[v])
+            return v;
+        return parent[v] = findp(parent[v]);
+    }
+
+    ll findr(ll v)
+    {
+        return rank[findp(v)];
+    }
+
+    void merge(ll a, ll b)
+    {
+        a = findp(a);
+        b = findp(b);
+        if (a < b)
+        {
+            parent[b] = a;
+            rank[a] += rank[b];
+        }
+        else if (a > b)
+        {
+            parent[a] = b;
+            rank[b] += rank[a];
+        }
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tdsu</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

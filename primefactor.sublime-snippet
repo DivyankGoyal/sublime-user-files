@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+
+vector<ll> primefactors(ll num)
+{
+    ll k,temp;
+    vector<ll> a;
+    temp = num;
+    for (ll i = 2; i*i <= temp;)
+    {
+        while (temp % i == 0)
+        {
+            temp = temp / i;
+            a.pb(i);
+        }
+        if(i==2)
+        i++;
+        else
+        i+=2;
+    }
+    if (temp != 1)
+        a.pb(temp);
+    return a;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tprimefactor</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

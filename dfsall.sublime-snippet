@@ -1,0 +1,51 @@
+<snippet>
+	<content><![CDATA[
+class dfsa
+{
+    public:
+        vector<ll> par,ht;
+        vector<pair<ll, ll>> time;
+        void dfsall(vector<vector<ll>> &adj,ll u, vector<ll> &vis, ll h,ll &t)
+        {
+            ll i, x;
+            ht[u]=h;
+            vis[u] = 1;
+            time[u].first = t;
+            for (i = 0; i < adj[u].size(); i++)
+            {
+                x = adj[u][i];
+                if (vis[x] == 0)
+                {
+                    par[x] = u;
+                    t++;
+                    dfsall(adj,x,vis,h+1,t);
+                    t++;
+                }
+            }
+            time[u].second = t;
+        }
+
+        bool check(ll x,ll y)
+        {
+            if(time[x].first <= time[y].first && time[y].second <= time[x].second)
+                return true;
+            else
+                return false;
+        }
+        void build(vector<vector<ll>> &adj)
+        {
+            ll n = adj.size()-1;
+            par.resize(n+1,0);
+            ht.resize(n+1,0);
+            time.resize(n+1,{-1,-1});
+            vector<ll> vis(n+1,0);
+            ll h = 0,t = 0;
+            dfsall(adj,1,vis,h,t);
+        }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tdfsall</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+vector<string> splitstring(string s, char ch)
+{
+    vector<string> a;
+    ll n = s.size();
+    for (ll i = 1; i < n;)
+    {
+        string t;
+        ll j = i;
+        while (j < n && s[j] != ch)
+        {
+            t.pb(s[j]);
+            j++;
+        }
+        a.pb(t);
+        i = j + 1;
+    }
+    return a;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tstringsplit</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

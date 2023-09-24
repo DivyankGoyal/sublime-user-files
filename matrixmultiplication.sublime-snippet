@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> matrixmultiply(vector<vector<ll>> &a,vector<vector<ll>> &b)
+{
+    if(a.size()==0 || b.size()==0 || a[0].size()==0 || b[0].size()==0)
+    {
+        return {{-1}};
+    }
+    if(a[0].size() != b.size())
+    {
+        return {{-1}};
+    }
+    ll i,j,k;
+    vector<vector<ll>> ar(a.size(),vector<ll> (b[0].size(),0));
+    for(i=0;i<a.size();i++)
+    {
+        for(j=0;j<b[0].size();j++)
+        {
+            for(k=0;k<a[0].size();k++)
+            {
+                ar[i][j] += a[i][k] * b[k][j];
+                ar[i][j] = ar[i][j]%M;
+            }
+        }
+    }
+    return ar;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tmatrixmultiplication</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

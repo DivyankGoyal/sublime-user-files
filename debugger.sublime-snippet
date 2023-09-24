@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+// divbugger
+#ifdef _div
+// #define printline
+#include<divyank.h>
+#else
+#define ttt
+#define trace(...)
+#define watch(...)
+#define printclock(...)
+#endif
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tdebugger</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

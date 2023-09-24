@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"indent_to_bracket": true,
+	"save_on_focus_lost": true,
+	"theme": "Adaptive.sublime-theme",
+	"font_size": 21,
+}

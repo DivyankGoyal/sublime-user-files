@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[
+ll dx[] = {0, 1, 0, -1};
+ll dy[] = {1, 0, -1, 0};
+
+bool safe(ll x, ll y, ll row, ll column)
+{
+    if (x >= 0 && x < row && y >= 0 && y < column)
+        return true;
+    else
+        return false;
+}
+
+pair<vector<vector<ll>>, vector<vector<pair<ll, ll>>>> bfs(vector<vector<ll>> &arr, ll row, ll column, ll stx, ll sty)
+{
+    vector<vector<pair<ll, ll>>> parent(row, vector<pair<ll, ll>> (column, { -1, -1}));
+    vector<vector<ll>> dis(row, vector<ll>(column, INT_MAX));
+    queue<pair<ll, ll>> q;
+    q.push({stx, sty});
+    parent[stx][sty] = { stx, sty};
+    dis[stx][sty] = 0;
+    while (!q.empty())
+    {
+        pair<ll, ll> it = q.front();
+        q.pop();
+        for (ll i = 0; i < 4; i++)
+        {
+            ll tx = it.first + dx[i];
+            ll ty = it.second + dy[i];
+            if (safe(tx, ty, row, column) && parent[tx][ty] == make_pair(-1, -1) && arr[tx][ty] == 0)
+            {
+                dis[tx][ty] = dis[it.first][it.second] + 1;
+                parent[tx][ty] = make_pair(it.first, it.second);
+                q.push({tx, ty});
+            }
+        }
+    }
+    return make_pair(dis, parent);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tbfs_matrix</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,87 @@
+<snippet>
+	<content><![CDATA[
+
+void print(ll value)
+{
+    cout << "{ " << value << " }\n";
+}
+
+void print(vector<pair<ll, ll>> &v)
+{
+    ll i;
+    cout << "\n";
+    cout << "Vector pair " << v.size() << "\n";
+    for (i = 0; i < v.size(); i++)
+    {
+        cout << v[i].first << " " << v[i].second << "\n";
+    }
+    cout << "\n";
+}
+
+void print(vector<vector<ll>> &graph1)
+{
+    cout << "\n";
+    cout << "Graph " << graph1.size() << "\n";
+    ll n = graph1.size();
+    for (ll i = 0; i < n ; i++)
+    {
+        cout << i << " -> ";
+        for (auto it : graph1[i])
+        {
+            cout << it << " ";
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+
+void print(map<ll, ll> &mpp)
+{
+    cout << "\n";
+    cout << "MAP " << mpp.size() << "\n";
+    for (auto it : mpp)
+    {
+        cout << it.first << " " << it.second << "\n";
+    }
+    cout << "\n";
+}
+
+void print(set<ll> se)
+{
+    for(auto it: se)
+    {
+        cout<<it<<" ";
+    }
+    cout<<"\n";
+}
+
+void print(stack<ll> st)
+{
+    stack<ll> b;
+    b = st;
+    while(b.size()>0)
+    {
+        cout<<b.top()<<" ";
+        b.pop();
+    }
+    cout<<"\n";
+}
+
+void print(queue<ll> qu)
+{
+    queue<ll> b;
+    b = qu;
+    while(b.size()>0)
+    {
+        cout<<b.front()<<" ";
+        b.pop();
+    }
+    cout<<"\n";
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tprint</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

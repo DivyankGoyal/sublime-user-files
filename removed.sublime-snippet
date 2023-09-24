@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+ll removed(vector<ll> &a,ll l)
+{
+    sort(a.begin()+l,a.end());
+    auto it = unique(a.begin()+l,a.end());
+    a.resize(it-a.begin());
+    ll n = sz(a)-l;
+    return n;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tremoved</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

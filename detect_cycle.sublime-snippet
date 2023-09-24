@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[
+void detect_cycle_dfs_1(vector<vector<ll>> &adj, ll u , vector<ll> &vis, vector<ll> &st, ll &cycle)
+{
+	ll i, x;
+	vis[u] = 1;
+	st[u] = 1;
+	for (i = 0; i < (int)adj[u].size(); i++)
+	{
+		x = adj[u][i];
+		if (st[x] == 1)
+		{
+			cycle = x;
+		}
+		if (vis[x] == 0)
+		{
+			detect_cycle_dfs_1(adj, x, vis, st, cycle);
+		}
+	}
+	st[u] = 0;
+}
+
+void  detect_cycle_dfs_2(vector<vector<ll>> &adj, ll u, vector<ll> &vis, vector<ll> &ans, ll &node)
+{
+	ll i, x;
+	vis[u] = 1;
+	ans.push_back(u);
+	for (i = 0; i < (int)adj[u].size(); i++)
+	{
+		x = adj[u][i];
+		if (x == node) // && ans.size() > 1 (exclude self cycle)
+		{
+			node = -1;
+			return;
+		}
+		if (vis[x] == 0)
+		{
+			detect_cycle_dfs_2(adj, x, vis, ans, node);
+			if (node == -1)
+				return;
+		}
+	}
+	ans.pop_back();
+}
+
+vector<ll> detect_cycle(vector<vector<ll>> &adj, ll n)
+{
+	vector<ll> vis(n + 1, 0);
+	vector<ll> st(n + 1, 0);
+	ll cycle = -1;
+	for (ll i = 1; i <= n; i++)
+	{
+		if (vis[i] == 0)
+		{
+			detect_cycle_dfs_1(adj, i, vis, st, cycle);
+		}
+	}
+	if (cycle != -1)
+	{
+		vector<ll> ans;
+		vector<ll> vis2(n + 1, 0);
+		detect_cycle_dfs_2(adj, cycle, vis2, ans, cycle);
+		return ans;
+	}
+	else
+	{
+		return {};
+	}
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>t_detect_cycle_in_directed_graph</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

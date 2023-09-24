@@ -1,0 +1,587 @@
+<snippet>
+	<content><![CDATA[
+#include<bits/stdc++.h>
+
+using namespace std;
+
+// divbugger
+#ifdef _div
+// #define printline
+#include<divyank.h>
+#else
+#define ttt
+#define trace(...)
+#define watch(...)
+#define printclock(...)
+#endif
+
+void print_code()
+{
+    cout << "#include<bits/stdc++.h>\n";
+    cout << "\n";
+    cout << "using namespace std;\n";
+    cout << "\n";
+    cout << "// divbugger\n";
+    cout << "#ifdef _div\n";
+    cout << "// #define printline\n";
+    cout << "#include<divyank.h>\n";
+    cout << "#else\n";
+    cout << "#define ttt\n";
+    cout << "#define trace(...)\n";
+    cout << "#define watch(...)\n";
+    cout << "#define printclock(...)\n";
+    cout << "#endif\n";
+    cout << "\n";
+    cout << "int input_int()\n";
+    cout << "{\n";
+    cout << "    int k;\n";
+    cout << "    cin >> k;\n";
+    cout << "    return k;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "long long input_long_long()\n";
+    cout << "{\n";
+    cout << "    long long k;\n";
+    cout << "    cin >> k;\n";
+    cout << "    return k;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "char input_char()\n";
+    cout << "{\n";
+    cout << "    string s;\n";
+    cout << "    cin >> s;\n";
+    cout << "    return s[1];\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "string input_string()\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    cin >> str;\n";
+    cout << "    str.pop_back();\n";
+    cout << "    str.erase(str.begin());\n";
+    cout << "    return str;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<int> input_array_int(string inp = " << (char)(34) << (char)(34) << ")\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    if (inp.size() == 0)\n";
+    cout << "        cin >> str;\n";
+    cout << "    else\n";
+    cout << "        str = inp;\n";
+    cout << "    vector<int> arr;\n";
+    cout << "    int k = 0;\n";
+    cout << "    for (int i = 0; i < str.size(); i++)\n";
+    cout << "    {\n";
+    cout << "        if (str[i] == '[')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ']')\n";
+    cout << "        {\n";
+    cout << "            arr.push_back(k);\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ',')\n";
+    cout << "        {\n";
+    cout << "            arr.push_back(k);\n";
+    cout << "            k = 0;\n";
+    cout << "        }\n";
+    cout << "        else\n";
+    cout << "        {\n";
+    cout << "            k = k * 10 + (str[i] - 48);\n";
+    cout << "        }\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<long long> input_array_long_long(string inp = " << (char)(34) << (char)(34) << ")\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    if (inp.size() == 0)\n";
+    cout << "        cin >> str;\n";
+    cout << "    else\n";
+    cout << "        str = inp;\n";
+    cout << "    vector<long long> arr;\n";
+    cout << "    long long k = 0;\n";
+    cout << "    for (long long i = 0; i < str.size(); i++)\n";
+    cout << "    {\n";
+    cout << "        if (str[i] == '[')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ']')\n";
+    cout << "        {\n";
+    cout << "            arr.push_back(k);\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ',')\n";
+    cout << "        {\n";
+    cout << "            arr.push_back(k);\n";
+    cout << "            k = 0;\n";
+    cout << "        }\n";
+    cout << "        else\n";
+    cout << "        {\n";
+    cout << "            k = k * 10 + (str[i] - 48);\n";
+    cout << "        }\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<char> input_array_char(string inp = " << (char)(34) << (char)(34) << ")\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    if (inp.size() == 0)\n";
+    cout << "        cin >> str;\n";
+    cout << "    else\n";
+    cout << "        str = inp;\n";
+    cout << "    vector<char> arr;\n";
+    cout << "    for (long long i = 0; i < str.size(); i++)\n";
+    cout << "    {\n";
+    cout << "        if (str[i] == '[')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ']')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ',')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == 34)\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == 39)\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else\n";
+    cout << "        {\n";
+    cout << "            arr.push_back(str[i]);\n";
+    cout << "        }\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<string> input_array_string(string inp = " << (char)(34) << (char)(34) << ")\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    if (inp.size() == 0)\n";
+    cout << "        cin >> str;\n";
+    cout << "    else\n";
+    cout << "        str = inp;\n";
+    cout << "    vector<string> arr;\n";
+    cout << "    string s;\n";
+    cout << "    for (long long i = 0; i < str.size(); i++)\n";
+    cout << "    {\n";
+    cout << "        if (str[i] == '[')\n";
+    cout << "        {\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ']')\n";
+    cout << "        {\n";
+    cout << "            s.pop_back();\n";
+    cout << "            s.erase(s.begin());\n";
+    cout << "            arr.push_back(s);\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else if (str[i] == ',')\n";
+    cout << "        {\n";
+    cout << "            s.pop_back();\n";
+    cout << "            s.erase(s.begin());\n";
+    cout << "            arr.push_back(s);\n";
+    cout << "            s.clear();\n";
+    cout << "            continue;\n";
+    cout << "        }\n";
+    cout << "        else\n";
+    cout << "        {\n";
+    cout << "            s.push_back(str[i]);\n";
+    cout << "        }\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<vector<int>> input_array_array_int()\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    cin >> str;\n";
+    cout << "    str.erase(str.begin());\n";
+    cout << "    str.pop_back();\n";
+    cout << "    vector<vector<int>> arr;\n";
+    cout << "    for (long long i = 0; i < str.size();)\n";
+    cout << "    {\n";
+    cout << "        string s;\n";
+    cout << "        while (i < str.size())\n";
+    cout << "        {\n";
+    cout << "            s.push_back(str[i]);\n";
+    cout << "            if (str[i] == ']')\n";
+    cout << "            {\n";
+    cout << "                i++;\n";
+    cout << "                break;\n";
+    cout << "            }\n";
+    cout << "            i++;\n";
+    cout << "        }\n";
+    cout << "        i++;\n";
+    cout << "        arr.push_back(input_array_int(s));\n";
+    cout << "        trace(s);\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<vector<long long>> input_array_array_long_long()\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    cin >> str;\n";
+    cout << "    str.erase(str.begin());\n";
+    cout << "    str.pop_back();\n";
+    cout << "    vector<vector<long long>> arr;\n";
+    cout << "    for (long long i = 0; i < str.size();)\n";
+    cout << "    {\n";
+    cout << "        string s;\n";
+    cout << "        while (i < str.size())\n";
+    cout << "        {\n";
+    cout << "            s.push_back(str[i]);\n";
+    cout << "            if (str[i] == ']')\n";
+    cout << "            {\n";
+    cout << "                i++;\n";
+    cout << "                break;\n";
+    cout << "            }\n";
+    cout << "            i++;\n";
+    cout << "        }\n";
+    cout << "        i++;\n";
+    cout << "        arr.push_back(input_array_long_long(s));\n";
+    cout << "        trace(s);\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "vector<vector<char>> input_array_array_char()\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    cin >> str;\n";
+    cout << "    str.erase(str.begin());\n";
+    cout << "    str.pop_back();\n";
+    cout << "    vector<vector<char>> arr;\n";
+    cout << "    for (long long i = 0; i < str.size();)\n";
+    cout << "    {\n";
+    cout << "        string s;\n";
+    cout << "        while (i < str.size())\n";
+    cout << "        {\n";
+    cout << "            s.push_back(str[i]);\n";
+    cout << "            if (str[i] == ']')\n";
+    cout << "            {\n";
+    cout << "                i++;\n";
+    cout << "                break;\n";
+    cout << "            }\n";
+    cout << "            i++;\n";
+    cout << "        }\n";
+    cout << "        i++;\n";
+    cout << "        arr.push_back(input_array_char(s));\n";
+    cout << "        trace(s);\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "\n";
+    cout << "vector<vector<string>> input_array_array_string()\n";
+    cout << "{\n";
+    cout << "    string str;\n";
+    cout << "    cin >> str;\n";
+    cout << "    str.erase(str.begin());\n";
+    cout << "    str.pop_back();\n";
+    cout << "    vector<vector<string>> arr;\n";
+    cout << "    for (long long i = 0; i < str.size();)\n";
+    cout << "    {\n";
+    cout << "        string s;\n";
+    cout << "        while (i < str.size())\n";
+    cout << "        {\n";
+    cout << "            s.push_back(str[i]);\n";
+    cout << "            if (str[i] == ']')\n";
+    cout << "            {\n";
+    cout << "                i++;\n";
+    cout << "                break;\n";
+    cout << "            }\n";
+    cout << "            i++;\n";
+    cout << "        }\n";
+    cout << "        i++;\n";
+    cout << "        arr.push_back(input_array_string(s));\n";
+    cout << "        // trace(s);\n";
+    cout << "    }\n";
+    cout << "    return arr;\n";
+    cout << "}\n";
+    cout << "\n";
+    cout << "#define ll                   long long\n";
+    cout << "#define ld                   long double\n";
+    cout << "#define pb                   push_back\n";
+    cout << "#define sz(a)                ((ll)a.size())\n";
+    cout << "#define min(a,b)             ((ll)min((ll)(a),(ll)(b)))\n";
+    cout << "#define max(a,b)             ((ll)max((ll)(a),(ll)(b)))\n";
+    cout << "#define ff                   first\n";
+    cout << "#define ss                   second\n";
+    cout << "#define sp(x)                setprecision(x)\n";
+    cout << "#define countsetbit(n)       __builtin_popcount(n)\n";
+    cout << "#define inf                  1000000000000000\n";
+    cout << "#define M                    ((1000*1000*1000) + 7)\n";
+    cout << "// #define M                    998244353\n";
+    cout << "\n";
+    cout << "ll ceil(ll a, ll b) {return ((a + b - 1) / b);}\n";
+    cout << "ll power(ll a, ll b) {return b == 0 ? 1 : (b % 2 ? a : 1) * power(a * a, b / 2);}\n";
+    cout << "\n";
+}
+
+void print_class(vector<string> s)
+{
+    long long i, j, l = 0;
+    for (i = 0; i < s.size(); i++)
+    {
+        for (j = 0; j < s[i].size(); j++)
+        {
+            if (s[i][j] == '{')
+            {
+                if (l == 0)
+                {
+                    cout << "\n{";
+                }
+                else
+                {
+                    cout << "\n    {";
+                }
+                l = 1;
+            }
+            else
+            {
+                cout << s[i][j];
+            }
+        }
+        cout << "\n";
+    }
+    cout << "\n\n\n\n\n";
+}
+
+vector<pair<string, string>> get_parameter(string str)
+{
+    long long n, m, x, y, z = 0, i, j, k, l = 0, sum = 0, ans = 0;
+    vector<pair<string, string>> para;
+    for (i = 0; i < str.size(); i++)
+    {
+        if (str[i] == '(')
+        {
+            l = 1;
+            continue;
+        }
+        if (str[i] == ')')
+            break;
+        if (l == 1)
+        {
+            string s;
+            while (i < str.size())
+            {
+                if (str[i] == ' ')
+                {
+                    y = s.size();
+                    if (y >= 4 && s[y - 4] == 'l' && s[y - 3] == 'o' && s[y - 2] == 'n' && s[y - 1] == 'g')
+                    {
+                        if (y >= 9 && s[y - 9] == 'l' && s[y - 8] == 'o' && s[y - 7] == 'n' && s[y - 6] == 'g')
+                            break;
+                        s.push_back(str[i]);
+                        i++;
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (str[i] == ',')
+                    break;
+                if (str[i] == '&')
+                    break;
+                if (str[i] == ')')
+                {
+                    l = 0;
+                    break;
+                }
+                s.push_back(str[i]);
+                i++;
+            }
+            if (s.size() > 0)
+            {
+                z++;
+                if (z % 2 == 1)
+                {
+                    para.push_back({s, ""});
+                }
+                else
+                {
+                    para.back().second = s;
+                }
+            }
+            if (l == 0)
+                break;
+        }
+    }
+    return para;
+}
+
+pair<string, string> get_function_name(string str)
+{
+    long long n, m, x, y, z, i, j, k, l = 0, sum = 0, ans = 0;
+    pair<string, string> v = {"", ""};
+    string s;
+    for (i = 0; i < str.size(); i++)
+    {
+        if (str[i] != ' ')
+            l = 1;
+        if (l == 1)
+        {
+            if (str[i] == ' ')
+            {
+                y = s.size();
+                if (y >= 4 && s[y - 4] == 'l' && s[y - 3] == 'o' && s[y - 2] == 'n' && s[y - 1] == 'g')
+                {
+                    if (y >= 9 && s[y - 9] == 'l' && s[y - 8] == 'o' && s[y - 7] == 'n' && s[y - 6] == 'g')
+                        break;
+                    s.push_back(str[i]);
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                s.push_back(str[i]);
+            }
+        }
+    }
+    v.first = s;
+    s.clear();
+    i++;
+    while (str[i] != ' ' && str[i] != '(')
+    {
+        s.push_back(str[i]);
+        i++;
+    }
+    v.second = s;
+    return v;
+}
+
+
+#define ll                   long long
+#define ld                   long double
+#define pb                   push_back
+#define sz(a)                ((ll)a.size())
+#define min(a,b)             ((ll)min((ll)(a),(ll)(b)))
+#define max(a,b)             ((ll)max((ll)(a),(ll)(b)))
+#define ff                   first
+#define ss                   second
+#define sp(x)                setprecision(x)
+#define countsetbit(n)       __builtin_popcount(n)
+#define inf                  1000000000000000
+#define M                    ((1000*1000*1000) + 7)
+// #define M                    998244353
+
+ll ceil(ll a, ll b) {return ((a + b - 1) / b);}
+ll power(ll a, ll b) {return b == 0 ? 1 : (b % 2 ? a : 1) * power(a * a, b / 2);}
+
+
+
+int main()
+{
+    print_code();
+    vector<string> s(6);
+    for (long long i = 0; i < 6; i++)
+    {
+        getline(cin, s[i]);
+    }
+    print_class(s);
+    vector<pair<string, string>> parameter = get_parameter(s[2]);
+    pair<string, string> function_name = get_function_name(s[2]);
+    cout << "int main()\n";
+    cout << "{\n";
+    cout << "    long long t;\n";
+    cout << "    cin >> t;\n";
+    cout << "    for(long long ii=1;ii<=t;ii++)\n";
+    cout << "    {\n";
+
+    for (long long i = 0; i < parameter.size(); i++)
+    {
+        cout << "        " << parameter[i].first << " " << parameter[i].second << " = ";
+        if (parameter[i].first == "int")
+        {
+            cout << "input_int();\n";
+        }
+        else if (parameter[i].first == "long long")
+        {
+            cout << "input_long_long();\n";
+        }
+        else if (parameter[i].first == "char")
+        {
+            cout << "input_char();\n";
+        }
+        else if (parameter[i].first == "string")
+        {
+            cout << "input_string();\n";
+        }
+        else if (parameter[i].first == "vector<int>")
+        {
+            cout << "input_array_int();\n";
+        }
+        else if (parameter[i].first == "vector<long long>")
+        {
+            cout << "input_array_long_long();\n";
+        }
+        else if (parameter[i].first == "vector<char>")
+        {
+            cout << "input_array_char();\n";
+        }
+        else if (parameter[i].first == "vector<string>")
+        {
+            cout << "input_array_string();\n";
+        }
+        else if (parameter[i].first == "vector<vector<int>>")
+        {
+            cout << "input_array_array_int();\n";
+        }
+        else if (parameter[i].first == "vector<vector<long long>>")
+        {
+            cout << "input_array_array_long_long();\n";
+        }
+        else if (parameter[i].first == "vector<vector<char>>")
+        {
+            cout << "input_array_array_char();\n";
+        }
+        else if (parameter[i].first == "vector<vector<string>>")
+        {
+            cout << "input_array_array_string();\n";
+        }
+        else
+        {
+            cout << "TEMPLATE NOT FOR THIS INPUT\n";
+            exit(0);
+        }
+    }
+    cout << "        Solution obj;\n";
+    cout << "        cout << " << (char)(34) << "TC " << (char)(34) << " << ii << " << (char)(34) << " -> " << (char)(34) << ";\n";
+    cout << "        trace(obj." << function_name.second << "(";
+    for (long long i = 0; i < parameter.size(); i++)
+    {
+        cout << parameter[i].second;
+        if (i + 1 != parameter.size())
+            cout << ", ";
+    }
+    cout << ")); \n";
+    cout << "    }\n";
+    cout << "}";
+    return 0;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tleetcode</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

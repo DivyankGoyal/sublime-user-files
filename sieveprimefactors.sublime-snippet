@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> sfact;
+void sieveprimefactor(ll n)
+{
+    sfact.resize(n+1);
+    for(ll i=2;i<=n;i++)         
+    {
+        if(sz(sfact[i])!=0)
+            continue;
+        for(ll j=i;j<=n;j=j+i)
+        {
+            ll temp = j;
+            while(temp%i==0)
+            {
+                temp = temp/i;
+                sfact[j].pb(i);
+                // break;           // use break for unique/disctict prime               
+            }
+        }
+    }
+}
+sieveprimefactor(200002);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tsieveprimefactors</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,70 @@
+<snippet>
+	<content><![CDATA[
+
+
+// Matrix Transformation for Solving linear recurrence
+// For finbocci series
+// [[ 0 1 ]]  [ [2] ] = [ [3] ]       [[ 0 1 ]]  [ [3] ] = [ [5] ]       [ [0 1] ]  [ [5] ] = [ [8] ]
+// [[ 1 1 ]]  [ [3] ] = [ [5] ]       [[ 1 1 ]]  [ [5] ] = [ [8] ]       [ [1 1] ]  [ [8] ] = [ [13]]
+
+// answer matrix = Transform^(N-2) * Intialvaluematrix
+
+
+
+//  Use ttt; to detect infinity loop inside a loop
+
+/*
+    begin() -> end() simple loop
+    rbegin() -> rend() reverse loop
+    Value of INT_MAX is +2147483647.
+    Value of INT_MIN is -2147483648.
+    Value of LLONG_MAX  is 9223372036854775807
+    Value of LLONG_MIN is -9223372036854775808
+*/
+
+// sort(a.begin()+1, a.end());   // sort is necessary to use unique
+// a.erase(unique(a.begin()+1, a.end()), a.end());  // unique return pointer to last element + 1   	                                                    // and then we remove that elements till the end
+
+// mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); // include 1 time only
+// z = uniform_int_distribution<int>(x,y)(rng);   // random number in range [l,r] inclusive
+
+// stable_sort( a.begin(),a.end() ,[&](int x,int y){ return ((x>>j) < (y>>j));} );
+// stable sort compare acc to divide by pow(2,j)
+// sort( a.begin(),a.end() ,[&](int x,int y){ return (x>>j) < (y>>j);} ); // sort compare
+
+// (k-1)/c + 1   row number in matrix for kth element in one based indexing
+// (k-1)%c + 1   column number in matrix for kth element in one based indexing
+
+// (k-1)/c   row number in matrix for kth element in zero based indexing
+// (k-1)%c   column number in matrix for kth element in zero based indexing
+
+// upper_bound(b.begin(), b.end(), make_pair(a[i], LLONG_MAX));
+// lower_bound(b.begin(), b.end(), make_pair(a[i], -1));
+
+// slope of a line given two points (x1,y1) and (x2,y2) -> (y2-y1)X - (x2-x1)Y + x2y1 - x1y2 = 0
+
+/*
+
+// number of element smaller than x
+cout << (lower_bound(a.begin(), a.end(), x) - a.begin()) << "\n";
+
+// number of element smaller than and equal to x
+cout << (upper_bound(a.begin(), a.end(), x) - a.begin()) << "\n";
+
+// number of element greater than x
+cout << (a.size() - (upper_bound(a.begin(), a.end(), x) - a.begin())) << "\n";
+
+// number of element greater than and equal to x
+cout << (a.size() - (lower_bound(a.begin(), a.end(), x) - a.begin())) << "\n";
+
+// number of elements in range [x,y]
+cout << (upper_bound(a.begin(), a.end(), y) - lower_bound(a.begin(), a.end(), x)) << "\n";
+
+*/
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tinfo</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

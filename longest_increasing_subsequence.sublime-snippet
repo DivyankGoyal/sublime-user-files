@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> longest_increasing_subsequence(vector<ll> a)
+{
+    ll i, n = a.size();
+    vector<pair<ll, ll>> b;
+    b.push_back({a[0], 0});
+    vector<ll> pre(n + 1, -1);
+    for (i = 1; i < n; i++)
+    {
+        auto ind = upper_bound(b.begin(), b.end(), make_pair(a[i], -1ll)) - b.begin();
+        if (ind == (int)b.size())
+        {
+            b.pb({a[i], i});
+        }
+        else
+        {
+            b[ind] = {a[i], i};
+        }
+        if (ind != 0)
+        {
+            pre[i] = b[ind - 1].second;
+        }
+    }
+    ll ele = b.back().second;
+    vector<ll> seq;
+    while (ele != -1)
+    {
+        seq.pb(a[ele]);
+        ele = pre[ele];
+    }
+    reverse(seq.begin(), seq.end());
+    return seq;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tlongest_increasing_subsequence</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

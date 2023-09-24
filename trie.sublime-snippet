@@ -1,0 +1,143 @@
+<snippet>
+	<content><![CDATA[
+class vertex
+{
+public:
+    vector<ll> next;
+    ll leaf;
+    ll count;
+    vertex()
+    {
+        count = 0;
+        leaf = 0;
+        next.clear();
+        next.resize(26, -1);
+    }
+};
+
+class class_trie
+{
+public:
+    vector<vertex> trie;
+    class_trie()
+    {
+        trie.clear();
+        trie.resize(1);
+    }
+    void add(string s)
+    {
+        ll n = s.size(), v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            if (trie[v].next[ch] == -1)
+            {
+                trie[v].next[ch] = trie.size();
+                vertex temp;
+                trie.push_back(temp);
+            }
+            trie[v].count++;
+            v = trie[v].next[ch];
+        }
+        trie[v].count++;
+        trie[v].leaf++;
+    }
+    ll find_string(string s)
+    {
+        ll n = s.size(), v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            if (trie[v].next[ch] == -1)
+            {
+                return 0;
+            }
+            v = trie[v].next[ch];
+        }
+        return trie[v].leaf;
+    }
+
+    ll find_substring(string s)
+    {
+        ll n = s.size(), v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            if (trie[v].next[ch] == -1)
+            {
+                return 0;
+            }
+            v = trie[v].next[ch];
+        }
+        return trie[v].count;
+    }
+
+    int erase_string(string s)
+    {
+        ll n = s.size(), v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            if (trie[v].next[ch] == -1 || trie[v].count == 0)
+            {
+                // cout << "String not present\n";   // string s not present in trie
+                return -1;
+            }
+            v = trie[v].next[ch];
+        }
+        if (trie[v].count == 0 || trie[v].leaf == 0)
+        {
+            // cout << "String not present\n";   // string s not present in trie
+            return -1;
+        }
+
+        v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            trie[v].count--;
+            v = trie[v].next[ch];
+        }
+        trie[v].count--;
+        trie[v].leaf--;
+        return 1;
+    }
+
+    int erase_all_string(string s)
+    {
+        ll n = s.size(), v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            if (trie[v].next[ch] == -1 || trie[v].count == 0)
+            {
+                // cout << "String not present\n";   // string s not present in trie
+                return -1;
+            }
+            v = trie[v].next[ch];
+        }
+        if (trie[v].count == 0 || trie[v].leaf == 0)
+        {
+            // cout << "String not present\n";   // string s not present in trie
+            return -1;
+        }
+
+        int k = trie[v].leaf;
+        v = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            int ch = s[i] - 'a';
+            trie[v].count -= k;
+            v = trie[v].next[ch];
+        }
+        trie[v].count -= k;
+        trie[v].leaf -= k;
+        return k;
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ttrie</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

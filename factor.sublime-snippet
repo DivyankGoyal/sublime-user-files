@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> factors(ll n)
+{
+    vector<ll> fac;
+    ll i;
+    ll k = n;
+    for (i = 1; i*i <= k; i++)
+    {
+        if (n % i == 0)
+        {
+            fac.pb(i);
+            if (i != n / i)
+            {
+                fac.pb(n / i);
+            }
+        }
+    }
+    return fac;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tfactor</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

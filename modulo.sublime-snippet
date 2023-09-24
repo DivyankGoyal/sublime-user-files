@@ -1,0 +1,63 @@
+<snippet>
+	<content><![CDATA[
+
+const ll N = 1000020;
+
+vector<ll> factorialNumInverse , naturalNumInverse , Fact;
+
+void modcal()
+{
+    Fact.resize(N+1,0);                  
+    naturalNumInverse.resize(N+1,0);     
+    factorialNumInverse.resize(N+1,0);
+    naturalNumInverse[0] = naturalNumInverse[1] = 1;
+    for (int i = 2; i <= N; i++)
+    {
+        naturalNumInverse[i] = naturalNumInverse[M % i] * (M - M / i) % M;
+    }
+    Fact[0] = 1;
+    for (int i = 1; i <= N; i++)
+    {
+        Fact[i] = (Fact[i - 1] * i) % M;
+    }
+    factorialNumInverse[0] = factorialNumInverse[1] = 1;
+    for (int i = 2; i <= N; i++)
+    {
+        factorialNumInverse[i] = (naturalNumInverse[i] * factorialNumInverse[i - 1]) % M;
+    }
+}
+
+ll fastpower(ll a, ll b)
+{
+    a %= M;
+    ll res = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a % M;
+        a = a * a % M;
+        b >>= 1;
+    }
+    return res;
+}
+
+ll modInverse(ll a)
+{
+    return fastpower(a, M - 2);
+}
+
+
+ll binomial(ll n, ll r)
+{
+    if (n < r || r < 0 || n < 0)
+        return 0;
+    ll ans = ((Fact[n] * factorialNumInverse[r]) % M * factorialNumInverse[n - r]) % M;
+    return ans;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tmodulo</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

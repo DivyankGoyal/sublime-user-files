@@ -1,0 +1,58 @@
+<snippet>
+	<content><![CDATA[
+
+class sparsematrix
+{
+public:
+	vector<vector<ll>> ar;
+	vector<ll> lg;
+	ll n;
+	sparsematrix(ll n, vector<ll> a, ll st, ll end)
+	{
+		this->n = n;
+		lg.clear();
+		lg.resize(n + 1, 0);
+		lg[1] = 0;
+		for (ll i = 2; i <= n; i++)
+		{
+			lg[i] = lg[i / 2] + 1;
+		}
+		ar.clear();
+		ar.resize(n + 1, vector<ll>(lg[n] + 1, -1));
+		for (ll i = st; i <= end; i++)
+		{
+			ar[i][0] = a[i];
+		}
+		for (ll x = 1; x <= lg[n]; x++)
+		{
+			for (ll i = st; i <= end; i++)
+			{
+				ll z = i + (1 << x) - 1;
+				if (z <= n)
+				{
+					ll x1 = ar[i][x - 1];
+					ll x2 = ar[i + (1 << (x - 1))][x - 1];
+					ar[i][x] = max(x1, x2);
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+	}
+	ll query(ll x, ll y)
+	{
+		ll l = (y - x + 1);
+		l = lg[l];
+		ll x1 = ar[x][l];
+		ll x2 = ar[y - (1 << l) + 1][l];
+		return max(x1, x2);
+	}
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tsparse</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define pb push_back
+
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); // include 1 time only
+
+ll rand(ll l,ll r)
+{
+	ll k = uniform_int_distribution<long long>(l,r)(rng);
+	return k;
+}
+
+void funofdiv()
+{
+    ll n,m,x,y,z,i,j,k,l=0,sum=0,ans=0;
+    n = rand(1,10);
+    vector<ll> a(1,0);
+    for(i=1;i<=n;i++)
+    {
+        cin>>x;
+        a.pb(x);
+    }
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll n = 5;
+    // cin >> n;
+    cout<<n<<"\n";
+    while(n--)
+    {
+        funofdiv();
+    }
+    return 0;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tgenerator</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

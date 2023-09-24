@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> matrixfastpower(vector<vector<ll>> &a,ll k)     // Must be a square matrix
+{
+    ll i,j,n,m,x,z;
+    if(a.size()==0)
+    {
+        return {{}};
+    }
+    n = a.size();
+    m = a[0].size();
+    if(n!=m)
+    {
+        return {{-1}};
+    }
+    vector<vector<ll>> ar(n,vector<ll>(n,0)),ax;
+    for(i=0;i<n;i++)
+    {
+        ar[i][i] = 1;
+    }
+    z = log2(k) + 1;
+    ax = a;
+    for(i=0;i<=z;i++)
+    {
+        if((k&((ll)1<<i)))
+        {
+            ar = matrixmultiply(ar,ax);
+        }
+        ax = matrixmultiply(ax,ax);
+    }
+    return ar;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tmatrixfastpower</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

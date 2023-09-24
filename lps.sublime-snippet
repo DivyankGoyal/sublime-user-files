@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+vector<int> lps(string &s)
+{
+    int n = s.size();
+    vector<int> dp(n,0);
+    dp[0] = 0;
+    int l = 0;
+    for(int i=1;i<n;i++)
+    {
+        while(l > 0 && s[l] != s[i])
+        {
+            l = dp[l-1];
+        }
+        if(s[l]==s[i])
+        {
+            l++;
+        }
+        dp[i] = l;
+    }
+    return dp;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tlps</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[
+ll binarytoint(string s)
+{
+    ll n = s.size(), sum = 0, l = 1;
+    for (ll i = n - 1; i >= 0; i--)
+    {
+        if (s[i] == '1')
+        {
+            sum += l;
+        }
+        l = l * 2;
+    }
+    return sum;
+}
+
+string intotbinary(ll n, ll len = -1)
+{
+    if (len == -1)
+    {
+        len = log2(n);
+    }
+    string s;
+    for (ll i = len; i >= 0; i--)
+    {
+        if (n & ((ll)1 << i))
+        {
+            s.push_back('1');
+        }
+        else
+        {
+            s.push_back('0');
+        }
+    }
+    return s;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tbinarystring_to_int_or_int_to_binarystring</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+ll squareroot(ll n)
+{
+    if (n < 0)
+    {
+        cout << "Invalid root\n";
+        return -1;
+    }
+    ll k = sqrt(n);
+    while (k * k <= n)
+        k++;
+    while (k * k > n)
+        k--;
+    return k;
+}]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tsquareroot</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

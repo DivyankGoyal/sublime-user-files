@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+
+void bfs(vector<vector<ll>> &adj, ll u, vector<ll> &vis)
+{
+    ll x, i, f;
+    queue<ll> q;
+    q.push(u);
+    vis[u] = 1;
+    while (!q.empty())
+    {
+        f = q.front();
+        q.pop();
+        // cout << f << " ";
+        for (i = 0; i < adj[f].size(); i++)
+        {
+            x = adj[f][i];
+            if (vis[x] == 0)
+            {
+                q.push(x);
+                vis[x] = 1;
+            }
+        }
+    }
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tbfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

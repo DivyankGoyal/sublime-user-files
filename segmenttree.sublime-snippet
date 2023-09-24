@@ -1,0 +1,126 @@
+<snippet>
+	<content><![CDATA[
+struct node
+{
+    ll val;
+};
+
+class segment_tree
+{
+public:
+    vector<node> seg;
+    vector<ll> a;
+    ll start, end;
+    void buildtree(ll l, ll r, ll si)
+    {
+        if (l == r)
+        {
+            seg[si] = segfun1(a, l);
+            return;
+        }
+        ll mid = (l + r) / 2;
+        buildtree(l, mid, 2 * si);
+        buildtree(mid + 1, r, 2 * si + 1);
+        seg[si] = segfun2(a, seg[2 * si], seg[2 * si + 1]);
+    }
+
+    void build(vector<ll> &b, ll l, ll r)
+    {
+        if (l > r)
+        {
+            return;
+        }
+        start = l;
+        end = r;
+        a = b;
+        ll k = ceil((long double)log2(end));
+        k = (ll) 1 << k;
+        seg.clear();
+        seg.resize(2 * k + 5);
+        buildtree(start, end, 1);
+    }
+
+    node querytree(ll tl, ll tr, ll l, ll r, ll si)
+    {
+        if (l > r)
+        {
+            return segbase();
+        }
+        if (tl == l && tr == r)
+        {
+            return seg[si];
+        }
+        ll mid = (tl + tr) / 2;
+        node n1 = querytree(tl, mid, l, min(r, mid), 2 * si);
+        node n2 = querytree(mid + 1, tr, max(l, mid + 1), r, 2 * si + 1);
+        node n3 = segfun2(a, n1, n2);
+        return n3;
+    }
+
+    node query(vector<ll> &a, ll l, ll r)
+    {
+        if (l < start || r > end || l > r)
+        {
+            cout << "(Invalid query for range {" << start << "," << end << "}) - ";
+            return segbase();
+        }
+        return querytree(start, end, l, r, 1);
+
+    }
+
+    void updatetree(ll pos, ll value, ll l, ll r, ll si)
+    {
+        if (l == r)  // or l == pos
+        {
+            seg[si] = segfun1(a, pos);
+        }
+        else
+        {
+            ll mid = (l + r) / 2;
+            if (pos <= mid)
+            {
+                updatetree(pos, value, l, mid, 2 * si);
+            }
+            else
+            {
+                updatetree(pos, value, mid + 1, r, 2 * si + 1);
+            }
+            seg[si] = segfun2(a, seg[si * 2], seg[si * 2 + 1]);
+        }
+    }
+
+    void update(vector<ll> &a, ll pos, ll value)
+    {
+        a[pos] = value;
+        ll n = a.size() - 1;
+        updatetree(pos, value, 1, n, 1);
+    }
+
+    node segfun1(vector<ll> &a, ll a_index)
+    {
+        node t;
+        t.val = a[a_index];
+        return t;
+    }
+
+    node segfun2(vector<ll> &a, node x, node y)
+    {
+        node t;
+        t.val = x.val + y.val;
+        return t;
+    }
+
+    node segbase()
+    {
+        node t;
+        t.val = 0;
+        return t;
+    }
+};
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tsegmenttree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,24 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		// "RevertFontSize",
+/*"SublimeAStyleFormatter",*/
+		"CppFastOlympicCoding",
+		"industrial-coding-theme",
+		"Package Control",
+		"Status Bar File Size",
+		"SublimeAStyleFormatter",
+		"SublimeLinter",
+		"SublimeLinter-clang",
+		"SublimeLinter-gcc",
+		"SummitLinter",
+		"Theme - Alpenglow",
+		"Theme - Arc",
+		"Theme - Aristocat",
+		"Theme - Asphalt",
+	],
+}
